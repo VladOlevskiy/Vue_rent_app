@@ -1,5 +1,5 @@
 <template lang="">
-  <form class="form" @submit.prevent="handleSubmit">
+  <form class="form" @submit="handleSubmit">
     <CustomSelect :items="cities" v-model="city" class="form__select" />
     <CustomInput v-model="price" placeholder="Ціна, від" />
     <Button type="submit" class="form__submit">Підбір житла</Button>
@@ -41,8 +41,9 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
-      this.$emit("submit", { city: this.city, price: this.price });
+    handleSubmit(evt) {
+      evt.preventDefault();
+      this.$emit("submitEvent", { city: this.city, price: this.price });
     },
   },
 };

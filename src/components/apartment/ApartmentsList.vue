@@ -1,5 +1,5 @@
 <template lang="">
-  <Container>
+  <div>
     <slot name="title"></slot>
     <div class="apartments-list">
       <ApartmentsItem
@@ -10,9 +10,10 @@
         :rating="rating"
         :imgSrc="imgUrl"
         :price="price"
+        :id="id"
       />
     </div>
-  </Container>
+  </div>
 </template>
 
 <script>

@@ -1,45 +1,36 @@
 <template>
-  <div>
-    <p>{{ text }}</p>
-    <Container>
-      <ApartmentsFilterForm class="apartments-filter" @submit="logger" />
-    </Container>
-    <ApartmentsList :items="apartments">
-      <template v-slot:title> Доступні вільні апартаменти </template>
-    </ApartmentsList>
+  <div class="app-container">
+    <Header />
+    <div class="content">
+      <router-view></router-view>
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-import ApartmentsList from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
-import ApartmentsFilterForm from "./components/apartment/ApartmentsFilterForm.vue";
-import Container from "./components/shared/Container.vue";
+import Footer from "./components/Footer.vue";
+import Header from "./components/Header.vue";
 
 export default {
   name: "App",
-  components: { ApartmentsList, ApartmentsFilterForm, Container },
-  data() {
-    return {
-      text: "",
-      apartments,
-    };
-  },
-  methods: {
-    logger(value) {
-      console.log(value);
-    },
+  components: {
+    Footer,
+    Header,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-#app {
-  margin-top: 60px;
-  text-align: center;
+.app-container {
   font-family: Montserrat;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-.apartments-filter {
-  margin-bottom: 40px;
+.content {
+  flex-grow: 1;
+  padding-top: 120px;
 }
 </style>

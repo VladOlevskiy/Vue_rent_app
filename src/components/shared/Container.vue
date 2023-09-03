@@ -9,7 +9,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.class {
+.container {
   max-width: 1110px;
   margin: 0 auto;
 }
